@@ -1,99 +1,13 @@
 /************/
 /* init:
 /************/
-npm install -g grunt-cli
-npm install grunt --save-dev
+npm install -g gulp-cli
+npm install gulp --save-dev 
+npm install --save-dev gulp-clean => used to clean physically
+npm install --save-dev gulp-clean-dest => used to clean in stream
 
-    /**/
-C:\Thibaut\workspace\NodeJS\Grunt>grunt
-A valid Gruntfile could not be found. Please see the getting started guide for
-more information on how to configure grunt: http://gruntjs.com/getting-started
-Fatal error: Unable to find Gruntfile.
+First, install browserify, tsify, and vinyl-source-stream. 
+tsify is a Browserify plugin that, like gulp-typescript, gives access to the TypeScript compiler. 
+vinyl-source-stream lets us adapt the file output of Browserify back into a format that gulp understands called vinyl.
 
-=> CREATE GruntFile.js
-
-    /**/
-grunt lib linkage in webstorm:
-Settings->Languages & Framework->JavaScript->Libraries
-Download "gruntjs-DefinitelyTyped"
-Manage scope -> link it t you project
-
-    /**/
-grunt default:build =>to run only build task
-grunt  => run all GruntFile.js tasks
-
-/****************/
-/* Grunt vs Gulp:
-/****************/
-Grunt = config json, beaucoup de plugin
-Gulp = config js + stream => plus performant que Grunt
-
-/************/
-/* Grunt use:
-/************/
-https://www.npmjs.com/package/grunt-contrib-copy
-npm install grunt-contrib-copy --save-dev
-
-    grunt.loadNpmTasks('grunt-contrib-copy'); // use of template grunt-contrib-copy
-
-    grunt.initConfig({
-
-        "copy":{
-            "dist":{
-                "files":[{
-                    "expand": true,     //expand: true to create relative path
-                    "cwd": "src",
-                    "src": "index.html",
-                    "dest": "dist"
-                }]
-            }
-        }
-    })
-
-grunt copy:dist -v // -v to have more log info
-
-/*********************/
-/* grunt-browserify:
-/*********************/
-http://gruntjs.com/plugins => to look for other plugins, for exemple browserify
-npm install grunt-browserify --save-dev
-
-/*********************/
-/* ordonnancer les tasks grunt:
-/*********************/
-    grunt.registerTask('dist',[
-        "copy:dist",
-        "browserify:dist"
-    ]);
-
-grunt dist
-
-/*********************/
-/* grunt-contrib-clean
-/* + grunt-contrib-uglify
-/*********************/
-npm install grunt-contrib-clean --save-dev
-npm install grunt-contrib-uglify --save-dev
-
-/*********************/
-/* Babel:
-/*********************/
-class MonBouton{} => in MonBouton.js, "class" keyword is ES6.
-grunt-contrib-uglify does not handle ES6
-transpile to ES5 thanks to bable:
-
-        babel: {
-            options: {
-                sourceMap: true,
-                minified:true,      // minify the js file already (uglify becomes useless)
-                presets: ['babel-preset-es2015']
-            },
-            dist: {
-                files: {
-                    'dist/js/index-browser-es5.js': 'dist/js/index-browser.js'
-                }
-            }
-        },
-/*********************/
-/* JIT Grunt:
-/*********************/
+npm install --save-dev browserify tsify vinyl-source-stream

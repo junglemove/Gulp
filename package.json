@@ -1,4 +1,12 @@
 {
   "name": "application-name",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-dest": "^0.2.0",
+    "tsify": "^2.0.3",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
